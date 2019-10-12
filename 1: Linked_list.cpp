@@ -7,58 +7,79 @@
 #include <iostream>
 using namespace std;
 
-//Creating Node Structure
-struct Node{
+typedef struct Node{
 	int data;
-	Node *link;
-};
-//creating head pointer and equating to NULL
-Node *head=NULL;
+	Node* next;
+}Node;
+Node* head = NULL;
 
-//Function to insert at the beginning of linked list
-void insertBeg (int d){
-	Node *ptr = new Node(); // creating HEAP MEMORY for ptr node
-	ptr->data=d;   //set ptr data to assigned d value
-	ptr->link=head;
-	head=ptr;
+Node* getNode(){
+	Node* newNode;
+	newNode = new Node();
+	cout << "Enter data: ";
+	cin >> newNode->data;
+	newNode->next = NULL;
+	return newNode;
 }
-//Function to insert at the end of linked list
-void insertEnd (int d){
-	Node *ptr = new Node();
-	ptr->data=d;
-	ptr->link=NULL;
-	
-	//If list is empty
-	if(head==NULL) head=ptr;
-	//else list is not empty
-	else{
-		Node *temp = head;
-		while(temp->link != NULL){
-		temp=temp->link;
-		}
-		temp->link=ptr;
-	}
-}
-//Function to display linked list
-void dispLink(){
-	Node *temp=head;
- 	while(temp!=NULL){
-  		cout<<temp->data<<" ";
-  	temp=temp->link;
- 		}
- 	cout<<"\n";
-	}
-//Main Function
+
+void createList(int n);
+void insertAtEnd();
+void insertAtBeg();
+void displayList();
+
 int main(){
-    int x, j;
-    cout << "Enter the terms your want to do: ";
-    cin >> j;
-    for(int i = 0; i < j; i++) {
-        cout << "Enter the elements: ";
-        cin >> x;
-        insertBeg(x);
-        dispLink();
-    }
- return 0;
+	createList(3);
+	displayList();
+	insertAtEnd();
+	displayList();
+	insertAtBeg();
+	displayList();
+	return 0;
 }
 
+void createList(int n){
+	Node* newNode; Node* temp;
+	for (int i = 0; i < n; ++i){
+		newNode = getNode();
+		if (head == NULL){
+			head = newNode;
+		}
+		else{
+			temp = head;
+			while(temp->next != NULL){
+				temp = temp->next;	
+			}
+			temp->next = newNode;
+		}
+	}
+}
+void insertAtEnd(){
+//	First of all creating a new Node
+	Node* newAdd = getNode();
+	newAdd->next = NULL;
+//	checking if the node is empty or not then taking decisions
+	if(head == NULL){
+		head = newAdd;
+	}
+	else{
+		Node* temp = head;
+		while(temp->next != NULL){
+			temp = temp->next;
+		}
+		temp->next = newAdd;
+	}
+}
+void insertAtBeg(){
+	Node* temp = getNode();
+	temp->next = head;
+	head = temp;
+}
+void displayList(){
+	Node* temp = head;
+	cout << "The data of linkedList is: ";
+	while(temp != NULL){
+		cout << temp->data << " ";
+		temp = temp->next;
+	}
+	cout << endl;
+}
