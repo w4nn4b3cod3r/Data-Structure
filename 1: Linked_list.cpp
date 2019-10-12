@@ -16,16 +16,14 @@ struct Node{
 Node *head=NULL;
 
 //Function to insert at the beginning of linked list
-void insertBeg (int d)
-{
+void insertBeg (int d){
  Node *ptr = new Node(); // creating HEAP MEMORY for ptr node
  ptr->data=d;   //set ptr data to assigned d value
  ptr->link=head;
  head=ptr;
 }
 //Function to insert at the end of linked list
-void insertEnd (int d)
-{
+void insertEnd (int d){
   Node *ptr = new Node();
   ptr->data=d;
   ptr->link=NULL;
@@ -34,32 +32,25 @@ void insertEnd (int d)
   if(head==NULL)
   head=ptr;
   //else list is not empty
-  else
-  {
+  else{
    Node *temp = head;
-   while(temp->link != NULL)
-   {
+   while(temp->link != NULL){
     temp=temp->link;
    }
    temp->link=ptr;
-
   }
-
 }
 //Function to display linked list
-void dispLink()
-{
+void dispLink(){
  Node *temp=head;
- while(temp!=NULL)
- {
+ while(temp!=NULL){
   cout<<temp->data<<" ";
   temp=temp->link;
  }
  cout<<"\n";
 }
 //Main Function
-int main()
-{
+int main(){
     int x, j;
     cout << "Enter the terms your want to do: ";
     cin >> j;
@@ -69,6 +60,5 @@ int main()
         insertBeg(x);
         dispLink();
     }
-
  return 0;
 }
