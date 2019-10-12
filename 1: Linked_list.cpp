@@ -15,7 +15,7 @@ Node* head = NULL;
 
 Node* getNode(){
 	Node* newNode;
-	newNode = new Node();
+	newNode = new Node(); // Or we can write newNode = (Node*)malloc(sizeof(Node))
 	cout << "Enter data: ";
 	cin >> newNode->data;
 	newNode->next = NULL;
