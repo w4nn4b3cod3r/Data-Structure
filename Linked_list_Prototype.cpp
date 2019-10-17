@@ -112,7 +112,7 @@ void reverseList(){
 	Node* current, *next, *prev;
 	current = head;
 	prev = NULL;
-	while(current->next != NULL){
+	while(current != NULL){
 		next = current->next;
 		current->next = prev;
 		prev = current;
@@ -127,12 +127,13 @@ int main(){
 	cin >> x;
 	createList(x);
 	showList();
-	insertNthPos(3);
-	showList();
-	deleteNodeNthPos(2);
-	showList();
+	//insertNthPos(3);
+	//showList();
+ 	//deleteNodeNthPos(2);
+ 	//showList();
 	cout << "Reversing the list: " << endl;
 	reverseList();
 	showList();
 	return 0;
 }
+
