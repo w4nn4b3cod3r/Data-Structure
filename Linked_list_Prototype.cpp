@@ -109,7 +109,16 @@ void deleteNodeNthPos(int delPos){
 	}
 }
 void reverseList(){
-	//Body
+	Node* current, *next, *prev;
+	current = head;
+	prev = NULL;
+	while(current->next != NULL){
+		next = current->next;
+		current->next = prev;
+		prev = current;
+		current = next;
+	}
+	head = prev;
 }
 // Main section. This program will run from main() function.
 int main(){
@@ -120,8 +129,10 @@ int main(){
 	showList();
 	insertNthPos(3);
 	showList();
-	deleteNodeNthPos(3);
+	deleteNodeNthPos(2);
+	showList();
+	cout << "Reversing the list: " << endl;
+	reverseList();
 	showList();
 	return 0;
 }
-
