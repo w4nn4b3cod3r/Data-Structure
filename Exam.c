@@ -1,13 +1,11 @@
 /*
 * Make a program with Linked list & display the list. Optional : in linked list increment the value of linked list items by 1
 */
-#include <iostream>
-#include <cstdlib>
-using namespace std;
-
+#include <stdio.h>
+#include <stdlib.h>
 typedef struct Node{
     int data;
-    Node* next;
+    struct Node* next;
 }Node;
 
 Node *head = NULL;
@@ -16,8 +14,8 @@ Node *head = NULL;
 Node* getNode(){
     Node* makeNode;
     makeNode = (Node*)malloc(sizeof(Node));
-    cout << "Enter the data for this node: "; // for c program use printf() instead of cout
-    cin >> makeNode->data; // for c program use instead of cin scanf("%d", &makeNode->data)
+    printf("Enter the data for this node: ");
+    scanf("%d", &makeNode->data);
     makeNode->next = NULL;
     return makeNode;
 }
@@ -47,15 +45,15 @@ void displayList()
 {
     Node* tempNode;
     tempNode = head;
-    cout << "Displaying the data of the linked-list: " << endl;
+    printf("Displaying the data of the linked-list:\n");
     while(tempNode != NULL){
-        cout << tempNode->data << "\t";
+        printf("%d\t", tempNode->data);
         tempNode = tempNode->next;
     }
-    cout << endl;
+    printf("\n");
 }
 
-/// OPTIONAL >> Please leave this area if you dont want to do something with data
+/// OPTIONAL >> Please leave this area if you don't want to do something with data
 void incrementData()
 {
     Node* accessdata;
@@ -64,17 +62,17 @@ void incrementData()
         accessdata->data += 1;
         accessdata = accessdata->next;
     }
-    cout << endl;
 }
 
 /// Calling main function
 int main()
 {
     int x;
-    cout << "Enter the number of length of list: " ;
-    cin >> x;
+    printf("Enter the number of list item: ");
+    scanf("%d", &x);
     createList(x);
     displayList();
     incrementData();
     displayList();
 }
+
