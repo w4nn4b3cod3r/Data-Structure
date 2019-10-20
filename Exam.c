@@ -79,7 +79,6 @@ int main()
 /*
 * With data validation & C++
 */
-
 #include <iostream>
 #include <string>
 using namespace std;
@@ -153,12 +152,12 @@ int main()
     int x;
     cout << "Enter the length of the list: ";
     cin >> x;
-    do {
+    while (x <= 0) {
         cout << "Invalid input ! Enter a Positive Non zero value: " ;
         cin.clear();
         cin.ignore(10000, '\n');
         cin >> x;
-    } while (x <= 0);
+    }
     createlist(x);
     displayList();
 }
