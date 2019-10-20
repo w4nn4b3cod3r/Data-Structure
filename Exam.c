@@ -153,14 +153,12 @@ int main()
     int x;
     cout << "Enter the length of the list: ";
     cin >> x;
-    if(x <= 0){
-        do {
-            cout << "Invalid input ! Enter a Positive Non zero value: " ;
-            cin.clear();
-            cin.ignore(10000, '\n');
-            cin >> x;
-        } while (x <= 0);
-    }
+    do {
+        cout << "Invalid input ! Enter a Positive Non zero value: " ;
+        cin.clear();
+        cin.ignore(10000, '\n');
+        cin >> x;
+    } while (x <= 0);
     createlist(x);
     displayList();
 }
