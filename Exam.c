@@ -76,3 +76,91 @@ int main()
     displayList();
 }
 
+/*
+* With data validation
+*/
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+typedef struct Node
+{
+    string getName;
+    int age;
+    Node* next;
+}Node;
+
+Node* head = NULL;
+
+Node* getNode()
+{
+    Node* makeNode;
+    makeNode = new Node();
+    cout << "Enter the name: ";
+    cin.clear(); // this will clear any cin.(string) error
+    cin.sync(); // this will clear any character and \n
+    getline(cin, makeNode->getName);
+    cout << "Enter the age: ";
+    do {
+        cin >> makeNode->age;
+
+        if(makeNode->age <= 0) {
+            cout << "Invalid Input ! Enter a non zero Integer Value: ";
+            cin.clear();
+            cin.ignore(1000, '\n');
+        }
+    }while (makeNode->age <= 0);
+
+    return makeNode;
+}
+
+void createlist(int y)
+{
+    Node* newNode;
+    for(int i = 0; i < y; ++i)
+    {
+        newNode = getNode();
+        if(head == NULL)
+        {
+            head = newNode;
+        }
+        else
+        {
+            Node *temp = head;
+            while(temp->next != NULL)
+            {
+                temp = temp->next;
+            }
+            temp->next = newNode;
+        }
+    }
+}
+
+void displayList()
+{
+    Node* temp;
+    temp = head;
+    while(temp != NULL)
+    {
+        cout << "Name of Student: " << temp->getName << "\tAge is: " << temp->age;
+        temp = temp->next;
+    }
+    cout << endl;
+}
+int main()
+{
+    int x;
+    cout << "Enter the length of the list: ";
+    cin >> x;
+    if(x <= 0){
+        do {
+            cout << "Invalid input ! Enter a Positive Non zero value: " ;
+            cin.clear();
+            cin.ignore(10000, '\n');
+            cin >> x;
+        } while (x <= 0);
+    }
+    createlist(x);
+    displayList();
+}
