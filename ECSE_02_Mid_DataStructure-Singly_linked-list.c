@@ -1,7 +1,7 @@
 /*
 * Building a linked-list with all the function used usually in Linked_List
 */
-#include <iostream>
+#include <iostream> // for C use #include <stdio.h> & #include <stdlib.h>
 
 using namespace std;
 
@@ -15,7 +15,7 @@ Node* head = NULL;
 // Each time getNode() get called will create a new node
 Node* getNode() {
     Node* newNode;
-    newNode = new Node();
+    newNode = new Node(); // FOR C use newNode = (Node*) malloc(sizeof(Node))
     cout << "Enter the name: ";
     cin >> newNode->name;
     cout << "Enter the roll: ";
@@ -125,7 +125,7 @@ void deleteNodeNthPos() {
                 ctr ++;
             }
             prev -> next = temp -> next;
-            delete temp;
+            delete temp; // for C use free(temp);
             cout << "node deleted !" << endl;
         } else {
             cout << "Invalid position entered !" << endl;
