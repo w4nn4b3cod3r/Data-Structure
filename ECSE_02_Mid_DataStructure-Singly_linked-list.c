@@ -152,10 +152,10 @@ int main() {
     cin >> x;
     createList(x);
     showList();
-    //insertNthPos(3);
-    //showList();
-    //deleteNodeNthPos(2);
-    //showList();
+    insertNthPos();
+    showList();
+    deleteNodeNthPos();
+    showList();
     cout << "Reversing the list: " << endl;
     reverseList();
     showList();
