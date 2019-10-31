@@ -1,5 +1,5 @@
 /*
-* Building a linked-list with all the function used usually in Singly Linked_List
+* Building a linked-list with all the function used usually in Linked_List
 */
 #include <iostream>
 
@@ -115,7 +115,7 @@ void deleteNodeNthPos() {
         cin >> pos;
         nodectr = countNode(head);
         if(pos > nodectr) {
-            printf("\nThis node does not exist");
+            cout << "This node doesn't exist !" << endl;
         }
         if(pos > 1 && pos < nodectr) {
             temp = prev = head;
@@ -133,7 +133,6 @@ void deleteNodeNthPos() {
     }
 
 }
-// For doing reverse order the linked-list
 void reverseList() {
     Node* current, *next, *prev;
     current = head;
@@ -153,10 +152,10 @@ int main() {
     cin >> x;
     createList(x);
     showList();
-    insertNthPos();
-    showList();
-    deleteNodeNthPos();
-    showList();
+    //insertNthPos(3);
+    //showList();
+    //deleteNodeNthPos(2);
+    //showList();
     cout << "Reversing the list: " << endl;
     reverseList();
     showList();
