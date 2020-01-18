@@ -6,9 +6,9 @@ void mergeArray(int d_array[], int left, int middle, int right);
 
 int main()
 {
-	int un_array[] = { 2,4,1,3 };
-	printf("Before: ");
+	int un_array[] = { 2,4,1,3,9,6,5,8,7 };
 	int length = sizeof(un_array) / sizeof(un_array[0]);
+	printf("Before: ");
 	displayArray(un_array, &length);
 	//printf("\nSize of the array: %d\n", length);
 	printf("After: ");
@@ -31,7 +31,8 @@ void merge_sort(int d_array[], int left, int right)
 }
 void mergeArray(int d_array[], int left, int middle, int right)
 {
-	int i, j, k; int q[4] = { 0 };
+	int i, j, k; 
+	int q[9];
 	i = left; j = (middle + 1); k = 0;
 	for (;;) {
 		if (d_array[i] < d_array[j])
@@ -41,8 +42,10 @@ void mergeArray(int d_array[], int left, int middle, int right)
 		if (i > middle || j > right)
 			break;
 	}
-	while (i <= middle) q[k++] = d_array[i++];
-	while (j <= right) q[k++] = d_array[j++];
+	while (i <= middle)
+		q[k++] = d_array[i++];
+	while (j <= right) 
+		q[k++] = d_array[j++];
 	k = 0;
 	for (int l = left; l <= right; l++)
 	{
