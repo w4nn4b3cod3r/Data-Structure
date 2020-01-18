@@ -19,7 +19,8 @@ int main()
 void merge_sort(int d_array[], int left, int right)
 {
 	int mid = 0;
-	if (left < right) {
+	if (left < right)
+	{
 		mid = ((left + right) / 2); // devided the array to a subarray
 		// for the left array
 		merge_sort(d_array, left, mid);
@@ -34,7 +35,8 @@ void mergeArray(int d_array[], int left, int middle, int right)
 	int i, j, k; 
 	int q[9];
 	i = left; j = (middle + 1); k = 0;
-	for (;;) {
+	for (;;) 
+	{
 		if (d_array[i] < d_array[j])
 			q[k++] = d_array[i++];
 		else
