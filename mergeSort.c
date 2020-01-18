@@ -12,7 +12,7 @@ int main()
 	displayArray(un_array, &length);
 	//printf("\nSize of the array: %d\n", length);
 	printf("After: ");
-	merge_sort(un_array, 0, (length));
+	merge_sort(un_array, 0, (length-1));
 	displayArray(un_array, &length);
 	return 0;
 }
@@ -33,20 +33,19 @@ void mergeArray(int d_array[], int left, int middle, int right)
 {
 	int i, j, k; int q[4] = { 0 };
 	i = left; j = (middle + 1); k = 0;
-	for (int m = left; m <= right; m++)
-	{
-		if (i > middle)
-			q[k++] = d_array[j++];
-		else if (j > right)
-			q[k++] = d_array[i++];
-		else if (d_array[i] < d_array[j])
+	for (;;) {
+		if (d_array[i] < d_array[j])
 			q[k++] = d_array[i++];
 		else
 			q[k++] = d_array[j++];
+		if (i > middle || j > right) break;
 	}
-	for (int some = 0; some < k; some++)
+	while (i <= middle) q[k++] = d_array[i++];
+	while (j <= right) q[k++] = d_array[j++];
+	k = 0;
+	for (int l = left; l <= right; l++)
 	{
-		d_array[left++] = q[some];
+		d_array[l] = q[k++];
 	}
 }
 void displayArray(int d_array[], int* length)
