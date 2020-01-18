@@ -38,7 +38,8 @@ void mergeArray(int d_array[], int left, int middle, int right)
 			q[k++] = d_array[i++];
 		else
 			q[k++] = d_array[j++];
-		if (i > middle || j > right) break;
+		if (i > middle || j > right)
+			break;
 	}
 	while (i <= middle) q[k++] = d_array[i++];
 	while (j <= right) q[k++] = d_array[j++];
