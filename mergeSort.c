@@ -6,34 +6,34 @@ void mergeArray(int d_array[], int left, int middle, int right);
 
 int main()
 {
-	int un_array[] = { 2,4,1,3,5 };
+	int un_array[] = { 2,4,1,3 };
 	printf("Before: ");
 	int length = sizeof(un_array) / sizeof(un_array[0]);
 	displayArray(un_array, &length);
 	//printf("\nSize of the array: %d\n", length);
 	printf("After: ");
-	merge_sort(un_array, 0, (length-1));
+	merge_sort(un_array, 0, (length));
 	displayArray(un_array, &length);
 	return 0;
 }
 void merge_sort(int d_array[], int left, int right)
 {
 	int mid = 0;
-	if (left < right){
-		mid = (left + right) / 2; // devided the array to a subarray
+	if (left < right) {
+		mid = ((left + right) / 2); // devided the array to a subarray
+		// for the left array
+		merge_sort(d_array, left, mid);
+		// for the right array
+		merge_sort(d_array, (mid + 1), right);
+		// merging the left and right array in sorted way to a new array
+		mergeArray(d_array, left, mid, right);
 	}
-	// for the left array
-	merge_sort(d_array, left, mid);
-	// for the right array
-	merge_sort(d_array, (mid + 1), right);
-	// merging the left and right array in sorted way to a new array
-	mergeArray(d_array, left, mid, right);
 }
 void mergeArray(int d_array[], int left, int middle, int right)
 {
 	int i, j, k; int q[4] = { 0 };
 	i = left; j = (middle + 1); k = 0;
-	for (int m = left; m < right; m++)
+	for (int m = left; m <= right; m++)
 	{
 		if (i > middle)
 			q[k++] = d_array[j++];
@@ -44,9 +44,8 @@ void mergeArray(int d_array[], int left, int middle, int right)
 		else
 			q[k++] = d_array[j++];
 	}
-	for (int some = 0; some <= k; some++)
+	for (int some = 0; some < k; some++)
 	{
-		//printf(" DDD: %d", q[some]);
 		d_array[left++] = q[some];
 	}
 }
